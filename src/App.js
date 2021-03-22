@@ -1,15 +1,15 @@
 import React from 'react';
-import Home from './components/Home';
+import { Home } from './components/Home';
 import { Map } from './components/Map';
 import { Profile } from './components/Profile';
 import { Header } from './components/Header';
 
 
-const PAGES = {
-  home: <Home />,
-  map: <Map />,
-  profile: <Profile />,
-}
+// const PAGES = (navigateTo) => ({
+//   home: <Home navigate={navigateTo} />,
+//   map: <Map navigate={navigateTo} />,
+//   profile: <Profile navigate={navigateTo} />,
+// });
 
 class App extends React.Component {
   state = { currentPage: 'home' }
@@ -21,10 +21,12 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header navigate={this.navigateTo} />
+        {this.state.currentPage !== "home" && <Header navigate={this.navigateTo} />}
         <main className="wrapper">
           <section>
-            {PAGES[this.state.currentPage]}
+            {this.state.currentPage === "home" && <Home navigate={this.navigateTo} />}
+            {this.state.currentPage === "map" && <Map />}
+            {this.state.currentPage === "profile" && <Profile />}
           </section>
         </main>
       </>
