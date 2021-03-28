@@ -11,10 +11,10 @@ export const Registration = ({ navigate, checkLogOrOut }) => {
         <Input name='email' type='email' label='Email' placeholder='mail@mail.ru' />
         <Input name='name' type='text' label='Введите ваше имя' placeholder='Иван Иванов' />
         <Input name='password' type='password' label='Пароль' placeholder='********' />
-      </form>
-      <button className="button button--login" onClick={() => navigate('map')}>
-        Зарегестрироваться
+        <button className="button button--login" onClick={() => navigate('map')}>
+          Зарегестрироваться
         </button>
+      </form>
       <div className="login__new-user">
         <span>Уже зарегестрированны? </span>
         <a href="#" className="login__registration" onClick={() => checkLogOrOut('login')}>Войти</a>

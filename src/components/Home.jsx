@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
-import { Login } from './Login';
+import { LoginWithAuth } from './Login';
 import { Registration } from './registration';
+import { withAuth } from './authContext'
 
 export class Home extends React.Component {
   static propTypes = {
@@ -32,7 +33,7 @@ export class Home extends React.Component {
         <div className='home__right-side'>
           <div className="home__login-form">
             {this.state.logOrOut === "login" &&
-              <Login checkLogOrOut={this.checkLogOrOut} navigate={this.props.navigate} />}
+              <LoginWithAuth checkLogOrOut={this.checkLogOrOut} navigate={this.props.navigate} />}
             {this.state.logOrOut === "registration" &&
               <Registration checkLogOrOut={this.checkLogOrOut} navigate={this.props.navigate} />}
           </div>
@@ -41,3 +42,5 @@ export class Home extends React.Component {
     )
   }
 }
+
+export const HomeWithAuth = withAuth(Home)
