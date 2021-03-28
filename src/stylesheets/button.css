@@ -10,6 +10,7 @@
 
 .button:hover {
   background: #FFA842;
+  transition: all 0.2s;
 }
 
 .button--login {

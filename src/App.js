@@ -1,17 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Home } from './components/Home';
 import { Map } from './components/Map';
 import { Profile } from './components/Profile';
 import { Header } from './components/Header';
 
-
-// const PAGES = (navigateTo) => ({
-//   home: <Home navigate={navigateTo} />,
-//   map: <Map navigate={navigateTo} />,
-//   profile: <Profile navigate={navigateTo} />,
-// });
-
 class App extends React.Component {
+  static propTypes = {
+    navigate: PropTypes.func
+  }
+
   state = { currentPage: 'home' }
 
   navigateTo = (page) => {
