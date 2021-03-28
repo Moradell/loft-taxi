@@ -4,9 +4,8 @@ import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
 import { Login } from './Login';
 import { Registration } from './registration';
-import { withAuth } from './authContext';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   static propTypes = {
     checkLogOrOut: PropTypes.func
   }
@@ -42,5 +41,3 @@ class Home extends React.Component {
     )
   }
 }
-
-export const HomeWithAuth = withAuth(Home)
