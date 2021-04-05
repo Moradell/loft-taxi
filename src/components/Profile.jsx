@@ -1,5 +1,11 @@
 import React from 'react';
+import { Header } from './Header'
+
 
 export const Profile = () => {
-  return <>Profile</>
+  return (
+    <>
+      <Header />
+    </>
+  )
 }

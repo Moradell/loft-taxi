@@ -1,22 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
 import { LoginWithAuth } from './Login';
 import { Registration } from './registration';
-import { withAuth } from './authContext'
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router';
 
 export class Home extends React.Component {
-  static propTypes = {
-    checkLogOrOut: PropTypes.func
-  }
-
-  state = { logOrOut: 'login' }
-
-  checkLogOrOut = (page) => {
-    this.setState({ logOrOut: page })
-  }
-
   render() {
     return (
       <div className='home' >
@@ -32,10 +22,10 @@ export class Home extends React.Component {
         </div>
         <div className='home__right-side'>
           <div className="home__login-form">
-            {this.state.logOrOut === "login" &&
-              <LoginWithAuth checkLogOrOut={this.checkLogOrOut} navigate={this.props.navigate} />}
-            {this.state.logOrOut === "registration" &&
-              <Registration checkLogOrOut={this.checkLogOrOut} navigate={this.props.navigate} />}
+            <Switch>
+              <Route exact path='/' component={LoginWithAuth} />
+              <Route path='/registration' component={Registration} />
+            </Switch>
           </div>
         </div>
       </div>
@@ -43,4 +33,4 @@ export class Home extends React.Component {
   }
 }
 
-export const HomeWithAuth = withAuth(Home)
+export const HomeWithAuth = connect()(Home)

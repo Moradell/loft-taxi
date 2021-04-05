@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from './Input';
 import './../stylesheets/login.css';
 import './../stylesheets/button.css';
+import { Link } from 'react-router-dom';
 
 export const Registration = ({ navigate, checkLogOrOut }) => {
   return (
@@ -17,7 +18,7 @@ export const Registration = ({ navigate, checkLogOrOut }) => {
       </form>
       <div className="login__new-user">
         <span>Уже зарегестрированны? </span>
-        <a href="#" className="login__registration" onClick={() => checkLogOrOut('login')}>Войти</a>
+        <span className="login__registration"><Link to="/">Войти</Link></span>
       </div>
     </div>
   )

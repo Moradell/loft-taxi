@@ -2,28 +2,26 @@ import React from 'react';
 import { Input } from './Input';
 import './../stylesheets/login.css';
 import './../stylesheets/button.css';
-import { withAuth } from './authContext';
+import { connect } from 'react-redux';
+import { authenticate } from '../actions';
+import { Link, Route, Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
-  goToMap = (event) => {
-    event.preventDefault();
-    this.props.navigate("map");
-  };
-
   authenticate = (event) => {
     event.preventDefault();
     const { email, password } = event.target;
-    this.props.logIn(email.value, password.value);
+    this.props.authenticate(email.value, password.value);
   };
   render() {
     return (
       <>
         {this.props.isLoggedIn ? (
-          <>
-            {this.props.navigate('map')}
-          </>
+          <button className="button">
+            <Link to="/map">Перейти к карте</Link>
+          </button>
+          // <Redirect path='/map' component={Map} />
         ) : (
-          <>
+          <Route>
             <div className="login">
               <div className="login__title">Войти</div>
               <form className='login__form' onSubmit={this.authenticate}>
@@ -32,18 +30,21 @@ class Login extends React.Component {
                 <a href="#" className="login__forgot-password">Забыли пароль?</a>
                 <button type="submit" className="button button--login">
                   Войти
-        </button>
+                </button>
               </form>
               <div className="login__new-user">
                 <span>Новый пользователь? </span>
-                <a href="#" className="login__registration" onClick={() => this.props.checkLogOrOut('registration')}> Регистрация</a>
+                <span className="login__registration"><Link to="/registration">Регистрация</Link></span>
               </div>
             </div>
-          </>
+          </Route>
         )}
       </>
     )
   }
 }
 
-export const LoginWithAuth = withAuth(Login)
+export const LoginWithAuth = connect(
+  (state) => ({ isLoggedIn: state.auth.isLoggedIn }),
+  { authenticate }
+)(Login)

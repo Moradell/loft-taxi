@@ -1,13 +1,14 @@
 import React from 'react';
-import { withAuth } from './authContext';
 import './../stylesheets/header.css';
 import sprite from './../assets/sprite.svg';
+import { connect } from 'react-redux';
+import { logOut } from '../actions';
+import { Link } from 'react-router-dom';
 
 export class Header extends React.Component {
   unauthenticate = (event) => {
     event.preventDefault();
     this.props.logOut();
-    this.props.navigate("home");
   };
 
   render() {
@@ -23,19 +24,15 @@ export class Header extends React.Component {
         </div>
         <ul className="header__menu">
           <li className="header__menu-item active">
-            <span onClick={() => { this.props.navigate('map') }}>
-              Карта
-                </span>
+            <Link to='/map'>Карта</Link>
           </li>
           <li className="header__menu-item">
-            <span onClick={() => { this.props.navigate('profile') }}>
-              Профиль
-                </span>
+            <Link to='/profile'>Профиль</Link>
           </li>
           <li className="header__menu-item">
-            <span onClick={this.unauthenticate}>
+            <a onClick={this.unauthenticate}>
               Выйти
-                </span>
+                </a>
           </li>
         </ul>
       </header>
@@ -43,4 +40,7 @@ export class Header extends React.Component {
   }
 }
 
-export const HeaderWithAuth = withAuth(Header)
+export const HeaderWithAuth = connect(
+  null,
+  { logOut }
+)(Header)
