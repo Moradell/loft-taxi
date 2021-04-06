@@ -21,30 +21,6 @@
   width: 100%;
 }
 
-.login__input {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.login__field {
-  margin-bottom: 25px;
-  border: 0;
-  border-bottom: 2px solid #E4E4E4;
-  outline: none;
-  padding: 7px 0;
-  background: transparent;
-}
-
-.login__field:focus {
-  border-color: #FDBF5A;
-}
-
-.login__label {
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
 .login__forgot-password {
   color: #828282;
   text-decoration: none;

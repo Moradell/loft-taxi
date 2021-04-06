@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from './Input';
 import './../stylesheets/login.css';
 import './../stylesheets/button.css';
+import '../stylesheets/input.css'
 import { connect } from 'react-redux';
 import { authenticate } from '../actions';
 import { Link, Route, Redirect } from 'react-router-dom'
