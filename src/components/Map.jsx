@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { Header } from './Header';
+import { HeaderWithAuth } from './Header';
 
 
 export class Map extends Component {
@@ -18,14 +18,10 @@ export class Map extends Component {
     });
   }
 
-  // componentWillUnmount() {
-  //   this.map.remove();
-  // }
-
   render() {
     return (
       <>
-        <Header />
+        <HeaderWithAuth />
         <div className='map-wrapper'>
           <div data-testid='map' className='map' ref={this.mapContainer} />
         </div>

@@ -3,7 +3,6 @@ import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
 import { LoginWithAuth } from './Login';
 import { Registration } from './registration';
-import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router';
 
 export class Home extends React.Component {
@@ -32,5 +31,3 @@ export class Home extends React.Component {
     )
   }
 }
-
-export const HomeWithAuth = connect()(Home)

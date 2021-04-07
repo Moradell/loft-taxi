@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeWithAuth } from './components/Home';
+import { Home } from './components/Home';
 import { Map } from './components/Map';
 import { Profile } from './components/Profile';
 import { connect } from 'react-redux';
@@ -13,8 +13,8 @@ class App extends React.Component {
         <main className="wrapper">
           <section>
             <Switch>
-              <Route exact path='/' component={HomeWithAuth} />
-              <Route path='/registration' component={HomeWithAuth} />
+              <Route exact path='/' component={Home} />
+              <Route path='/registration' component={Home} />
               <PrivateRoute path='/map' component={Map} />
               <PrivateRoute path='/profile' component={Profile} />
             </Switch>
@@ -25,4 +25,4 @@ class App extends React.Component {
   }
 }
 
-export default connect((state) => ({ isLoggedIn: state.auth.isLoggedIn }))(App);
+export default App;

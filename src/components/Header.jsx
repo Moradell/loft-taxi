@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { logOut } from '../actions';
 import { Link } from 'react-router-dom';
 
-export class Header extends React.Component {
+class Header extends React.Component {
   unauthenticate = (event) => {
     event.preventDefault();
     this.props.logOut();
@@ -30,9 +30,9 @@ export class Header extends React.Component {
             <Link to='/profile'>Профиль</Link>
           </li>
           <li className="header__menu-item">
-            <a onClick={this.unauthenticate}>
+            <span onClick={this.unauthenticate}>
               Выйти
-                </a>
+                </span>
           </li>
         </ul>
       </header>

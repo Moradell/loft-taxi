@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './Header';
+import { HeaderWithAuth } from './Header';
 import { Input } from './Input';
 import sprite from './../assets/sprite.svg'
 import '../stylesheets/profile.css';
@@ -9,7 +9,7 @@ import '../stylesheets/button.css';
 export const Profile = () => {
   return (
     <>
-      <Header />
+      <HeaderWithAuth />
       <div className="profile">
         <div className="profile__wrapper">
           <div className="profile__text">

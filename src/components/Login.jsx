@@ -5,7 +5,7 @@ import './../stylesheets/button.css';
 import '../stylesheets/input.css'
 import { connect } from 'react-redux';
 import { authenticate } from '../actions';
-import { Link, Route, Redirect } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 class Login extends React.Component {
   authenticate = (event) => {
