@@ -1,7 +1,7 @@
 import { LOG_IN, LOG_OUT } from '../actions';
 
 
-const initialState = {
+export const initialState = {
   isLoggedIn: false
 }
 

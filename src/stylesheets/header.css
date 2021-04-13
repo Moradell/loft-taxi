@@ -8,6 +8,7 @@
   background: #000;
   width: 100%;
   padding: 0 50px 0 27px;
+  z-index: 100;
 }
 
 .header__logo {

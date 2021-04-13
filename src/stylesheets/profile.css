@@ -12,6 +12,7 @@
   height: 588px;
   background: #fff;
   padding: 50px 50px 75px;
+  border-radius: 10px;
 }
 
 .profile__text {
@@ -93,6 +94,28 @@
 .profile__precheck-master-card-logo {
   width: 48px;
   height: 28px;
+}
+
+.profile__verified {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 345px;
+  width: 888px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 80px 114px;
+}
+
+.profile__verified-title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.profile__verified-text {
+  color: #7B7B7B;
+  font-size: 18px;
 }
 
 .profile__button {

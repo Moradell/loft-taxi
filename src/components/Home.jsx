@@ -2,7 +2,7 @@ import React from 'react';
 import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
 import { LoginWithAuth } from './Login';
-import { Registration } from './registration';
+import { connectRegistration } from './registration';
 import { Route, Switch } from 'react-router';
 
 export class Home extends React.Component {
@@ -23,7 +23,7 @@ export class Home extends React.Component {
           <div className="home__login-form">
             <Switch>
               <Route exact path='/' component={LoginWithAuth} />
-              <Route path='/registration' component={Registration} />
+              <Route path='/registration' component={connectRegistration} />
             </Switch>
           </div>
         </div>

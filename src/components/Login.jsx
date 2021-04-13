@@ -20,7 +20,6 @@ class Login extends React.Component {
           <button className="button">
             <Link to="/map">Перейти к карте</Link>
           </button>
-          // <Redirect path='/map' component={Map} />
         ) : (
           <Route>
             <div className="login">

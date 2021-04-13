@@ -17,3 +17,7 @@
 .button--login {
   margin-top: 75px;
 }
+
+.button--profile-verified-card {
+  font-size: 21px;
+}

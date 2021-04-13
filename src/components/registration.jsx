@@ -3,8 +3,10 @@ import { Input } from './Input';
 import './../stylesheets/login.css';
 import './../stylesheets/button.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registrationAction } from '../actions';
 
-export const Registration = ({ navigate, checkLogOrOut }) => {
+const Registration = ({ navigate, registrationAction, status }) => {
   return (
     <div className="login">
       <div className="login__title">Регистрация</div>
@@ -23,3 +25,8 @@ export const Registration = ({ navigate, checkLogOrOut }) => {
     </div>
   )
 }
+
+export const connectRegistration = connect(
+  (state) => ({ status: state.registration.status }),
+  { registrationAction }
+)(Registration);

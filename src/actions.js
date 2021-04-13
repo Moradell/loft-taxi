@@ -1,3 +1,4 @@
+// Actions for authorization
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const AUTHENTICATE = 'AUTHENTICATE';
@@ -8,3 +9,44 @@ export const authenticate = (email, password) => ({
   type: AUTHENTICATE,
   payload: { email, password },
 });
+
+// Actions for payment on Profile-page
+export const CARD_INFO = 'CARD_INFO';
+export const VERIFIER_DONE = 'VERIFIER_DONE';
+
+export const verifierDone = () => ({ type: VERIFIER_DONE });
+export const cardInfo = (cardNumber, expireDate, cardName, cvc) => ({
+  type: CARD_INFO,
+  payload: { cardNumber, expireDate, cardName, cvc }
+})
+
+// Actions for address-list
+export const GET_ADDRESS_LIST = 'GET_ADDRESS_LIST';
+export const GET_ADDRESS_LIST_SUCCESS = 'GET_ADDRESS_LIST_SUCCESS';
+export const GET_ADDRESS_LIST_FAILURE = 'GET_ADDRESS_LIST_FAILURE';
+
+export const getAddressList = () => ({
+  type: GET_ADDRESS_LIST
+})
+
+export const getAddressListSuccess = (list) => ({
+  type: GET_ADDRESS_LIST_SUCCESS,
+  payload: list
+})
+
+export const getAddressListFailure = (error) => ({
+  type: GET_ADDRESS_LIST_FAILURE,
+  payload: error
+})
+
+// Actions for registartion
+export const REGISTRATION = 'REGISTRATION';
+export const REGISTRATION_IS_DONE = 'REGISTRATION_IS_DONE';
+
+export const registrationAction = (email, password, name, surname) => ({
+  type: REGISTRATION,
+  payload: { email, password, name, surname },
+});
+
+export const registrationIsDone = () => ({ type: REGISTRATION_IS_DONE })
+

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Home } from './components/Home';
-import { Map } from './components/Map';
-import { Profile } from './components/Profile';
-import { connect } from 'react-redux';
+import { MapConnect } from './components/Map';
+import { ProfileWithVerified } from './components/Profile';
 import { Route, Switch } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -15,8 +14,8 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/registration' component={Home} />
-              <PrivateRoute path='/map' component={Map} />
-              <PrivateRoute path='/profile' component={Profile} />
+              <PrivateRoute path='/map' component={MapConnect} />
+              <PrivateRoute path='/profile' component={ProfileWithVerified} />
             </Switch>
           </section>
         </main>
