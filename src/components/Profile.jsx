@@ -38,7 +38,7 @@ class Profile extends React.Component {
                 <div className="profile__description">Введите платежные данные</div>
               </div>
               <div className="profile__content">
-                <form className="profile__form" id="card" onSubmit={this.cardInfo}>
+                <form className="profile__form" id="card" onSubmit={this.props.cardInfo()}>
                   <Input name='cardName' type='text' label='Имя владельца' placeholder='Иван Иванов' />
                   <Input name='cardNumber' type='text' label='Номер карты' placeholder='0000 0000 0000 0000' />
                   <div className="profile__row">
