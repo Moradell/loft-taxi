@@ -13,14 +13,15 @@ export const serverLogin = async (email, password) => {
     .then(res => res.json()).then(data => data.success);
 };
 // Card-info
-export const paymentCard = async (cardNumber, expireDate, cardName, cvc) => {
+export const paymentCard = async (cardNumber, expireDate, cardName, cvc, token) => {
   return fetch('https://loft-taxi.glitch.me/card', {
     method: 'POST',
     body: JSON.stringify({
       "cardNumber": cardNumber,
       "expireDate": expireDate,
       "cardName": cardName,
-      "cvc": cvc
+      "cvc": cvc,
+      'token': token,
     }),
     headers: {
       'Content-Type': 'application/json'

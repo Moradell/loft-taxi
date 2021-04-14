@@ -5,8 +5,9 @@ import { serverRegistration } from "./api";
 export function* registrationSaga(action) {
   const { email, password, name, surname } = action.payload;
   const success = yield call(serverRegistration, email, password, name, surname);
+  localStorage.setItem(`${name}`, success.token);
   if (success.success) {
-    yield put(registrationIsDone)
+    yield put(registrationIsDone);
   }
 }
 

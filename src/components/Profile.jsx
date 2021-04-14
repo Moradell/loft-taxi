@@ -12,8 +12,9 @@ import { Link } from 'react-router-dom';
 class Profile extends React.Component {
   cardInfo = (event) => {
     event.preventDefault();
+    const token = localStorage.getItem(333);
     const { cardNumber, expireDate, cardName, cvc } = event.target;
-    this.props.cardInfo(cardNumber.value, expireDate.value, cardName.value, cvc.value);
+    this.props.cardInfo(cardNumber.value, expireDate.value, cardName.value, cvc.value, token);
   };
   render() {
     return (

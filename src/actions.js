@@ -15,9 +15,9 @@ export const CARD_INFO = 'CARD_INFO';
 export const VERIFIER_DONE = 'VERIFIER_DONE';
 
 export const verifierDone = () => ({ type: VERIFIER_DONE });
-export const cardInfo = (cardNumber, expireDate, cardName, cvc) => ({
+export const cardInfo = (cardNumber, expireDate, cardName, cvc, token) => ({
   type: CARD_INFO,
-  payload: { cardNumber, expireDate, cardName, cvc }
+  payload: { cardNumber, expireDate, cardName, cvc, token }
 })
 
 // Actions for address-list
