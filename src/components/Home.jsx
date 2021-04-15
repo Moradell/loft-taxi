@@ -2,7 +2,7 @@ import React from 'react';
 import './../stylesheets/home.css';
 import sprite from './../assets/sprite.svg';
 import { LoginWithAuth } from './Login';
-import { connectRegistration } from './registration';
+import { connectRegistration } from './Registration';
 import { Route, Switch } from 'react-router';
 
 export class Home extends React.Component {

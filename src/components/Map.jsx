@@ -1,9 +1,10 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { HeaderWithAuth } from './Header';
 import { ConnectOrder } from './Order';
 import { connect } from 'react-redux';
-import { getAddressList } from '../actions'
+import { getAddressList } from '../actions';
+import { drawRoute } from '../drawRoute';
 
 class Map extends Component {
   mapContainer = React.createRef();
@@ -20,6 +21,20 @@ class Map extends Component {
     });
   }
 
+  removeMapLayer = (map) => {
+    const mapLayer = map.getLayer('route');
+    if (mapLayer) {
+      map.removeLayer('route').removeSource('route');
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.coords.coords !== prevProps.coords.coords) {
+      this.removeMapLayer(this.map);
+      drawRoute(this.map, this.props.coords.coords)
+    }
+  }
+
 
   render() {
     return (
@@ -33,6 +48,6 @@ class Map extends Component {
 }
 
 export const MapConnect = connect(
-  (state) => ({ address: state.address }),
+  (state) => ({ address: state.address, coords: state.coords }),
   { getAddress: getAddressList }
 )(Map)

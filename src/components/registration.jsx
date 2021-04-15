@@ -5,16 +5,17 @@ import './../stylesheets/button.css';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registrationAction } from '../actions';
-import { initialState } from '../reducers/auth';
 
-const Registration = ({ navigate, registrationAction, status, isLoggedIn }) => {
+const Registration = ({ registrationAction, status }) => {
   const history = useHistory();
 
   function registration(event) {
     event.preventDefault();
     const { email, password, name, surname } = event.target;
     registrationAction(email.value, password.value, name.value, surname.value);
-    initialState.isLoggedIn = true;
+  }
+
+  if (status) {
     history.push('/map');
   }
   return (
@@ -38,6 +39,6 @@ const Registration = ({ navigate, registrationAction, status, isLoggedIn }) => {
 }
 
 export const connectRegistration = connect(
-  (state) => ({ status: state.registration.status, isLoggedIn: state.auth.isLoggedIn }),
+  (state) => ({ status: state.registration.status }),
   { registrationAction }
 )(Registration);

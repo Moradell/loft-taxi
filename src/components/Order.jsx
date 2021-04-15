@@ -5,30 +5,38 @@ import bisiness from '../assets/bisiness.png';
 import '../stylesheets/order.css';
 import '../stylesheets/button.css';
 import { connect } from 'react-redux';
-import { getAddressList } from '../actions';
+import { getAddressList, getCoords } from '../actions';
 
-const Order = ({ getAddress, address }) => {
+
+const Order = ({ getAddress, address, getCoords, coords }) => {
   useEffect(() => {
     getAddress();
   }, [])
+
+  function coordsRoute(event) {
+    event.preventDefault();
+    const { select_dot_a, select_dot_b } = event.target;
+    getCoords(select_dot_a.value, select_dot_b.value);
+  }
   return (
     <div className='map-wrapper'>
       <div className="order">
-        <ul className="order__selects">
-          <li className="order__selects-item">
-            <select name="select-dot-a" id="select" className="select">
-              <option selected disabled>Откуда</option>
-              {address.list.map(item => (<option value={item}>{item}</option>))}
-            </select>
-          </li>
-          <li className="order__selects-item">
-            <select name="select-dot-b" id="select" className="select">
-              <option selected disabled>Куда</option>
-              <option selected disabled>Откуда</option>
-              {address.list.map(item => (<option value={item}>{item}</option>))}
-            </select>
-          </li>
-        </ul>
+        <form className="order__form" id="order-form" onSubmit={coordsRoute}>
+          <ul className="order__selects">
+            <li className="order__selects-item">
+              <select name="select_dot_a" id="select" className="select">
+                <option selected disabled>Откуда</option>
+                {address.list.map(item => (<option value={item}>{item}</option>))}
+              </select>
+            </li>
+            <li className="order__selects-item">
+              <select name="select_dot_b" id="select" className="select">
+                <option selected disabled>Куда</option>
+                {address.list.map(item => (<option value={item}>{item}</option>))}
+              </select>
+            </li>
+          </ul>
+        </form>
         <div className="order__tariff">
           <ul className="order__tariff-list">
             <li className="order__tariff-item">
@@ -64,7 +72,7 @@ const Order = ({ getAddress, address }) => {
           </ul>
         </div>
         <div className="order__button">
-          <button className="button">Заказать</button>
+          <button type='submit' className="button" form="order-form">Заказать</button>
         </div>
       </div>
     </div>
@@ -72,6 +80,6 @@ const Order = ({ getAddress, address }) => {
 }
 
 export const ConnectOrder = connect(
-  state => ({ address: state.address }),
-  { getAddress: getAddressList }
+  state => ({ address: state.address, coords: state.coords }),
+  { getAddress: getAddressList, getCoords }
 )(Order);

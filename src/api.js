@@ -51,3 +51,10 @@ export const serverRegistration = async (email, password, firstname, surname) =>
   })
     .then(res => res.json());
 };
+
+// Get coords 
+export const getCoordsOnServer = async (address1, address2) => {
+  return fetch(
+    `https://loft-taxi.glitch.me/route?address1=${address1}&address2=${address2}`
+  ).then(res => res.json())
+}
