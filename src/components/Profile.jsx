@@ -12,7 +12,9 @@ import { Link } from 'react-router-dom';
 class Profile extends React.Component {
   cardInfo = (event) => {
     event.preventDefault();
-    const token = localStorage.getItem(333);
+    const token = this.props.token;
+    console.log(token)
+    console.log(this.props.card)
     const { cardNumber, expireDate, cardName, cvc } = event.target;
     this.props.cardInfo(cardNumber.value, expireDate.value, cardName.value, cvc.value, token);
   };
@@ -38,7 +40,7 @@ class Profile extends React.Component {
                 <div className="profile__description">Введите платежные данные</div>
               </div>
               <div className="profile__content">
-                <form className="profile__form" id="card" onSubmit={this.props.cardInfo()}>
+                <form className="profile__form" id="card" onSubmit={this.cardInfo}>
                   <Input name='cardName' type='text' label='Имя владельца' placeholder='Иван Иванов' />
                   <Input name='cardNumber' type='text' label='Номер карты' placeholder='0000 0000 0000 0000' />
                   <div className="profile__row">
@@ -79,6 +81,6 @@ class Profile extends React.Component {
 }
 
 export const ProfileWithVerified = connect(
-  (state) => ({ cardVerified: state.payment.cardVerified }),
+  (state) => ({ cardVerified: state.payment.cardVerified, token: state.auth.token, card: state.auth.card }),
   { cardInfo }
 )(Profile)

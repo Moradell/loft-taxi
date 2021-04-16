@@ -4,7 +4,6 @@ import { paymentCard } from "./api";
 
 export function* doPayment(action) {
   const { cardNumber, expireDate, cardName, cvc, token } = action.payload;
-  console.log(cardNumber, expireDate, cardName, cvc, token);
   const success = yield call(paymentCard, cardNumber, expireDate, cardName, cvc, token)
   if (success) {
     yield put(verifierDone())
