@@ -81,6 +81,6 @@ class Profile extends React.Component {
 }
 
 export const ProfileWithVerified = connect(
-  (state) => ({ cardVerified: state.payment.cardVerified, token: state.auth.token, card: state.auth.card }),
+  (state) => ({ cardVerified: state.payment.cardVerified, token: state.auth.token }),
   { cardInfo }
 )(Profile)
