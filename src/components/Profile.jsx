@@ -14,9 +14,8 @@ class Profile extends React.Component {
     event.preventDefault();
     const token = this.props.token;
     console.log(token)
-    console.log(this.props.card)
-    const { cardNumber, expireDate, cardName, cvc } = event.target;
-    this.props.cardInfo(cardNumber.value, expireDate.value, cardName.value, cvc.value, token);
+    const { cardNumber, expiryDate, cardName, cvc } = event.target;
+    this.props.cardInfo(cardNumber.value, expiryDate.value, cardName.value, cvc.value, token);
   };
   render() {
     return (
@@ -44,7 +43,7 @@ class Profile extends React.Component {
                   <Input name='cardName' type='text' label='Имя владельца' placeholder='Иван Иванов' />
                   <Input name='cardNumber' type='text' label='Номер карты' placeholder='0000 0000 0000 0000' />
                   <div className="profile__row">
-                    <Input name='expireDate' type='text' label='MM/YY' placeholder='01/05' />
+                    <Input name='expiryDate' type='text' label='MM/YY' placeholder='01/05' />
                     <Input name='cvc' type='text' label='CVC' placeholder='000' />
                   </div>
                 </form>
