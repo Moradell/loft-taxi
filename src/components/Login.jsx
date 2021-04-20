@@ -18,10 +18,9 @@ const Login = (isLoggedIn) => {
     dispatch(authenticate(email, password));
   }
 
-  // if (isLoggedIn) {
-  //   history.push('/map')
-
-  // }
+  if (isLoggedIn) {
+    history.push('/map')
+  }
 
   return (
     <div className="login">
