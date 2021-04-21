@@ -3,12 +3,12 @@ import './../stylesheets/login.css';
 import './../stylesheets/button.css';
 import '../stylesheets/input.css'
 import { connect, useDispatch } from 'react-redux';
-import { Link, Route, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { authenticate } from '../actions';
 
 
-const Login = (isLoggedIn) => {
+export const Login = (isLoggedIn) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -18,9 +18,9 @@ const Login = (isLoggedIn) => {
     dispatch(authenticate(email, password));
   }
 
-  if (isLoggedIn) {
-    history.push('/map')
-  }
+  // if (isLoggedIn) {
+  //   history.push('/map')
+  // }
 
   return (
     <div className="login">
