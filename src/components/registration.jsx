@@ -1,18 +1,19 @@
 import React from 'react';
-import { Input } from './Input';
 import './../stylesheets/login.css';
 import './../stylesheets/button.css';
 import { Link, useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { registrationAction } from '../actions';
+import { useForm } from 'react-hook-form';
 
-const Registration = ({ registrationAction, status }) => {
+const Registration = ({ status }) => {
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  function registration(event) {
-    event.preventDefault();
-    const { email, password, name, surname } = event.target;
-    registrationAction(email.value, password.value, name.value, surname.value);
+  const onSubmit = (data) => {
+    const { email, password, name, surname } = data;
+    dispatch(registrationAction(email, password, name, surname));
   }
 
   if (status) {
@@ -21,11 +22,15 @@ const Registration = ({ registrationAction, status }) => {
   return (
     <div className="login">
       <div className="login__title">Регистрация</div>
-      <form className='login__form' onSubmit={registration}>
-        <Input name='email' type='email' label='Email' placeholder='mail@mail.ru' />
-        <Input name='name' type='text' label='Введите ваше имя' placeholder='Иван' />
-        <Input name='surname' type='text' label='Введите вашу фамилию' placeholder='Иванов' />
-        <Input name='password' type='password' label='Пароль' placeholder='********' />
+      <form className='login__form' onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="email" className='input__label'>Email:</label>
+        <input {...register('email')} name='email' type='email' label='Email' placeholder='mail@mail.ru' className='input__field' />
+        <label htmlFor="name" className='input__label'>Введите ваше имя:</label>
+        <input {...register('name')} name='name' type='text' label='Введите ваше имя' placeholder='Иван' className='input__field' />
+        <label htmlFor="surname" className='input__label'>Введите вашу фамилию:</label>
+        <input {...register('surname')} name='surname' type='text' label='Введите вашу фамилию' placeholder='Иванов' className='input__field' />
+        <label htmlFor="password" className='input__label'>Пароль:</label>
+        <input {...register('password')} name='password' type='password' label='Пароль' placeholder='********' className='input__field' />
         <button type='submit' className="button button--login">
           Зарегестрироваться
         </button>
@@ -40,5 +45,4 @@ const Registration = ({ registrationAction, status }) => {
 
 export const connectRegistration = connect(
   (state) => ({ status: state.registration.status }),
-  { registrationAction }
 )(Registration);

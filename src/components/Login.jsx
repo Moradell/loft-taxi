@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { authenticate } from '../actions';
 
 
-export const Login = (isLoggedIn) => {
+export const Login = ({ isLoggedIn }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -18,9 +18,9 @@ export const Login = (isLoggedIn) => {
     dispatch(authenticate(email, password));
   }
 
-  // if (isLoggedIn) {
-  //   history.push('/map')
-  // }
+  if (isLoggedIn) {
+    history.push('/map')
+  }
 
   return (
     <div className="login">
